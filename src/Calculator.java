@@ -36,6 +36,19 @@ public class Calculator
     {
         int a = Integer.parseInt(tokens[1]); // Throws NumberFormatException if the second token is not an int value.
         // TODO: complete this...
+        String command = tokens[0];
+        if (!(command.equalsIgnoreCase("negate") || command.equalsIgnoreCase("halve")))
+        {
+        	System.out.println("throw new CalculatorException (not negate nor halve)");
+        }
+        if (command.equalsIgnoreCase("negate"))
+        {
+        	return -Integer.parseInt(tokens[1]);
+        }
+        else 
+        {
+        	return Integer.parseInt(tokens[1]) / 2;
+        }
     }
 
     /**
@@ -69,6 +82,27 @@ public class Calculator
     protected static int calculateThreeTokens(String[] tokens)
             throws ArithmeticException, NumberFormatException, CalculatorException
     {
+    	 int a = Integer.parseInt(tokens[0]);
+    	 int b = Integer.parseInt(tokens[2]);
+    	 String command = tokens[1];
+    	 if (!(command.equals("+") || command.equals("-")|| command.equals("/")))
+    	 {
+    		 	System.out.println("throw new CalculatorException (not /, -  or +)");
+    	 }
+    	 if (command.equals("+"))
+    	 {
+    		 return a + b;
+    	 }
+    	 else if (command.equals("-"))
+    	 {
+    		 return a - b;
+    	 }
+    	 else 
+    	 {
+    		 return a/b;
+    	 }
+    	 
+    	
         // TODO: complete this...
     }
 
