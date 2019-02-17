@@ -268,8 +268,8 @@ public class CalculatorTest {
     public void parseAndExecuteTestDivideByZero() throws AssertException
     {
         // TODO: complete this test...
-    	 String result = Calculator.parseAndExecute("5 / 0");
-         Assert.assertEquals("Illegal Command", e.getMessage());
+    		String result = Calculator.parseAndExecute("5 / 0");
+        Assert.assertEquals("Calculator Exception, message is: Cannot divide by zero", result);
     	
     }
 
