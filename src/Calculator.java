@@ -39,7 +39,7 @@ public class Calculator
         String command = tokens[0];
         if (!(command.equalsIgnoreCase("negate") || command.equalsIgnoreCase("halve")))
         {
-        	System.out.println("throw new CalculatorException (not negate nor halve)");
+        		throw new CalculatorException("did not enter negate nor halve");
         }
         if (command.equalsIgnoreCase("negate"))
         {
@@ -87,7 +87,7 @@ public class Calculator
     	 String command = tokens[1];
     	 if (!(command.equals("+") || command.equals("-")|| command.equals("/")))
     	 {
-    		 	System.out.println("throw new CalculatorException (not /, -  or +)");
+    		 throw new CalculatorException("did not enter +, - , or /");
     	 }
     	 if (command.equals("+"))
     	 {
@@ -139,10 +139,34 @@ public class Calculator
         // Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
         {
+        }
+        if (tokens.length == 0)
+        {
+        	if (tokens[0].equalsIgnoreCase("quit"))
+        	{
+        		return Integer.MIN_VALUE;
+        	}
+        	else
+        	{
+        		throw new CalculatorException(" not a valid command: quit,negate,have,+,-, nor /");
+        	}
+        }
+        else if (tokens.length == 2)
+        {
+        	return calculateTwoTokens(tokens);
+        }
+        else if (tokens.length == 3)
+        {
+        	return calculateThreeTokens(tokens);
+        }
+        else if (tokens.length == 4)
+        {
+        	throw new NumberFormatException();
+        }
             // TODO: complete this...
         }
 
-    }
+    
 
     /**
      * Method to split up the user input. "Tokenizes" (converts a large string into string chunks) by splitting the
@@ -175,8 +199,11 @@ public class Calculator
      */
     public static String parseAndExecute(String input)
     {
+    	String [] tokens = input.split(" ");
+    	if ()
         // TODO: complete this...
         // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
         // method will catch those exceptions and respond accordingly.
+    	
     }
 }
