@@ -28,7 +28,17 @@ public class CalculatorTest {
     public void calculateTwoTokensTestValidHalve() throws AssertException
     {
         // TODO: complete this test...
+    	try
+        {
+            int result = Calculator.calculateTwoTokens(new String[] {"halve", "5"});
+            Assert.assertEquals(-5, result);
+        }
+        catch (Exception e)
+        {
+            Assert.fail("Legal expression threw an Exception: " + e.getMessage());
+        }
     }
+    
 
     /**
      * Test invalid two-token input (number is not an int):
@@ -56,6 +66,18 @@ public class CalculatorTest {
      */
     public void calculateTwoTokensTestInvalidCommand() throws AssertException
     {
+    	 try
+         {
+             Calculator.calculateTwoTokens(new String[] {"foo", "5"});
+             Assert.fail("Illegal expression did not throw an Exception");
+         }
+         catch (NumberFormatException e)
+         {
+         }
+         catch (Exception e)
+         {
+             Assert.fail("Unexpected Exception (not NumberFormatException) caught");
+         }
         // TODO: complete this test...
     }
 
@@ -65,6 +87,16 @@ public class CalculatorTest {
     public void calculateThreeTokensTestValidAdd() throws AssertException
     {
         // TODO: complete this test...
+     	try
+        {
+            int result = Calculator.calculateTwoTokens(new String[] {"5", "+","10"});
+            Assert.assertEquals(15, result);
+        }
+        catch (Exception e)
+        {
+            Assert.fail("Legal expression threw an Exception: " + e.getMessage());
+        }
+    }
     }
 
     /**
