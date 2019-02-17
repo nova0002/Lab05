@@ -268,6 +268,9 @@ public class CalculatorTest {
     public void parseAndExecuteTestDivideByZero() throws AssertException
     {
         // TODO: complete this test...
+    	 String result = Calculator.parseAndExecute("5 / 0");
+         Assert.assertEquals("Illegal Command", e.getMessage());
+    	
     }
 
     /**
@@ -276,6 +279,8 @@ public class CalculatorTest {
     public void parseAndExecuteTestInvalidNumber() throws AssertException
     {
         // TODO: complete this test...
+    	 	String result = Calculator.parseAndExecute("foo / 5");
+         Assert.assertEquals("Calculator Exception, message is: Illegal Number", result);
     }
 
     /**
@@ -293,5 +298,7 @@ public class CalculatorTest {
     public void parseAndExecuteTestInvalidTokenLength() throws AssertException
     {
         // TODO: complete this test...
+        String result = Calculator.parseAndExecute("foo 6 10 / 14");
+        Assert.assertEquals("Calculator Exception, message is: Illegal Length", result);
     }
 }
