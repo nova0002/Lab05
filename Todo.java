@@ -1,8 +1,8 @@
 public class Todo {/*
-Lab Section_________: XX
-Last Modified_______: 20XX-XX-XX
-OU ID_______________: XXXXXXXXX
-OU EMAIL____________: XXX@ou.edu
+Lab Section_________: 11
+Last Modified_______: 2019-02-18
+OU ID_______________: 113425548
+OU EMAIL____________: amanda.k.novak-1@ou.edu
 
 Tasks:
 1. Complete calculateTwoTokens()
@@ -45,6 +45,20 @@ Estimated Time (minutes):
 
 
 Actual Time (minutes):
-1. XXX
-2. XXX
+1. 10
+2. 15
+3. 10
+4. 30
+5. 20
+6. 10
+7. 15
+8. 10
+9. 25
+10. 10 
+11. 15
+12. 15
+13. 30
+14. 10
+15. 15
+16. 10
 */}

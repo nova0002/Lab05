@@ -139,6 +139,8 @@ public class Calculator
         // Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
         {
+        case 0:
+        	throw new CalculatorException("Illegal Token Length");
         case 1:
         if (tokens[0].equalsIgnoreCase("quit"))
         	{
@@ -150,15 +152,15 @@ public class Calculator
         	}
         case 2:
         
-        		return calculateTwoTokens(tokens);
+        	return calculateTwoTokens(tokens);
+        	
         case 3:
         
-        		return calculateThreeTokens(tokens);
+        	return calculateThreeTokens(tokens);
         
         default:
         
-        		throw new NumberFormatException();
-        
+        	throw new CalculatorException("Illegal Token Length");        
             // TODO: complete this...
         }
         }
@@ -196,7 +198,7 @@ public class Calculator
      * @throws CalculatorException 
      * @throws NumberFormatException 
      */
-    public static String parseAndExecute(String input) throws NumberFormatException, CalculatorException 
+    public static String parseAndExecute(String input) 
     {
     	String [] tokens = input.split(" ");
     	try
@@ -214,7 +216,7 @@ public class Calculator
     	}
    catch(ArithmeticException e)
    {
-	   String a = " Attempted to divide by 0. Please try again.";
+	   String a = "Attempted to divide by 0. Please try again.";
 	   return a;
    }
    catch (NumberFormatException e)
@@ -224,8 +226,7 @@ public class Calculator
    }
    catch (CalculatorException e)
    {
-	   String a = "Illegal Command";
-	   return a;
+	   return String.format("Calculator Exception, message is: %s", e.getMessage());	   
     	}
    
     	}

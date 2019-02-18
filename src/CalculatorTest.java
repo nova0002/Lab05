@@ -89,7 +89,7 @@ public class CalculatorTest {
         // TODO: complete this test...
      	try
         {
-            int result = Calculator.calculateTwoTokens(new String[] {"5", "+","10"});
+            int result = Calculator.calculateThreeTokens(new String[] {"5", "+","10"});
             Assert.assertEquals(15, result);
         }
         catch (Exception e)
@@ -106,7 +106,7 @@ public class CalculatorTest {
         // TODO: complete this test...
     	try
         {
-            int result = Calculator.calculateTwoTokens(new String[] {"10", "-","5"});
+            int result = Calculator.calculateThreeTokens(new String[] {"10", "-","5"});
             Assert.assertEquals(5, result);
         }
         catch (Exception e)
@@ -123,7 +123,7 @@ public class CalculatorTest {
         // TODO: complete this test...
     	try
         {
-            int result = Calculator.calculateTwoTokens(new String[] {"10", "/","5"});
+            int result = Calculator.calculateThreeTokens(new String[] {"10", "/","5"});
             Assert.assertEquals(2, result);
         }
         catch (Exception e)
@@ -200,8 +200,8 @@ public class CalculatorTest {
         // TODO: complete this test...
     	 try
          {
-             Calculator.calculateThreeTokens(new String[] {"quit"});
-             Assert.fail("Illegal expression did not throw an Exception");
+    		 int result = Calculator.execute(new String[] {"Integer.MIN_VALUE"});
+    		 Assert.assertEquals("Integer.MIN_VALUE", result);
          }
          catch (CalculatorException e)
          {
@@ -322,8 +322,17 @@ public class CalculatorTest {
     public void parseAndExecuteTestDivideByZero() throws AssertException
     {
         // TODO: complete this test...
-    		String result = Calculator.parseAndExecute("5 / 0");
-        Assert.assertEquals("Arithemtic Exception", result);
+    	try
+        {
+            Calculator.execute(new String[] {"5 / 0"});
+            Assert.fail("Illegal expression did not throw an Exception");
+        }
+        catch (ArithmeticException e)
+        {
+        }
+    	 catch (CalculatorException e)
+        {
+        }
     }
 
     /**
@@ -334,7 +343,7 @@ public class CalculatorTest {
         // TODO: complete this test...
     	try
         {
-            Calculator.execute(new String[] {"5 / 0"});
+            Calculator.execute(new String[] {"5 / a"});
             Assert.fail("Illegal expression did not throw an Exception");
         }
         catch (CalculatorException e)
@@ -357,7 +366,14 @@ public class CalculatorTest {
     public void parseAndExecuteTestInvalidTokenLength() throws AssertException
     {
         // TODO: complete this test...
-    	 	String result = Calculator.parseAndExecute("foo 6 foo 6");
-         Assert.assertEquals("Calculator Exception, message is: Illegal Command", result);
+      	try
+        {
+            Calculator.execute(new String[] {"5 / 7 +"});
+            Assert.fail("Illegal expression did not throw an Exception");
+        }
+        catch (CalculatorException e)
+        {
+        }
     }
-}
+    }
+
