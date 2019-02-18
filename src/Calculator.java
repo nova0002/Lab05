@@ -39,7 +39,7 @@ public class Calculator
         String command = tokens[0];
         if (!(command.equalsIgnoreCase("negate") || command.equalsIgnoreCase("halve")))
         {
-        		throw new CalculatorException("did not enter negate nor halve");
+        		throw new CalculatorException("Illegal Command");
         }
         if (command.equalsIgnoreCase("negate"))
         {
@@ -87,11 +87,11 @@ public class Calculator
     	 String command = tokens[1];
     	 if (!(command.equals("+") || command.equals("-")|| command.equals("/")))
     	 {
-    		 throw new CalculatorException("did not enter +, - , or /");
+    		 throw new CalculatorException("Illegal Command");
     	 }
     	 if (command.equals("+"))
     	 {
-    		 return a + b;
+    		 return (a + b);
     	 }
     	 else if (command.equals("-"))
     	 {
@@ -139,32 +139,28 @@ public class Calculator
         // Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
         {
-        }
-        if (tokens.length == 1)
-        {
-        	if (tokens[0].equalsIgnoreCase("quit"))
+        case 1:
+        if (tokens[0].equalsIgnoreCase("quit"))
         	{
         		return Integer.MIN_VALUE;
         	}
         	else
         	{
-        		throw new CalculatorException("not a valid command: quit,negate,have,+,-, nor /");
+        		throw new CalculatorException("Illegal Command");
         	}
-        }
-        else if (tokens.length == 2)
-        {
+        case 2:
+        
         		return calculateTwoTokens(tokens);
-        }
-        else if (tokens.length == 3)
-        {
+        case 3:
+        
         		return calculateThreeTokens(tokens);
-        }
-        else if (tokens.length == 4)
-        {
+        
+        default:
+        
         		throw new NumberFormatException();
-        }
+        
             // TODO: complete this...
-		return 0;
+        }
         }
 
     
@@ -203,25 +199,38 @@ public class Calculator
     public static String parseAndExecute(String input) throws NumberFormatException, CalculatorException 
     {
     	String [] tokens = input.split(" ");
+    	try
+    	{
    int k = execute(tokens);
-    	if (tokens.length == 1)
-    	{
-    		if (k ==Integer.MIN_VALUE)
-    		{
-    			String b = "quit";
-    			return b;
-    		}
-    	if (tokens.length == 2);
-    	{
-    		return String.format("The result is: %d", k);
+   if (k == Integer.MIN_VALUE)
+   {
+   	String a = "quit";
+   	return a;
+   }
+   else 
+   {
+   return String.format("The result is: %d", k);
+   }
     	}
-    		
+   catch(ArithmeticException e)
+   {
+	   String a = " Attempted to divide by 0. Please try again.";
+	   return a;
+   }
+   catch (NumberFormatException e)
+   {
+	   String a = "Input number cannot be parsed to an int. Please try again.";
+	   return a;
+   }
+   catch (CalculatorException e)
+   {
+	   String a = "Illegal Command";
+	   return a;
     	}
-		return null;
-    	
-        // TODO: complete this...
-        // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
-        // method will catch those exceptions and respond accordingly.
-    	
-    }
+   
+    	}
 }
+ // TODO: complete this...
+    // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
+    // method will catch those exceptions and respond accordingly.
+
