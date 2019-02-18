@@ -140,7 +140,7 @@ public class Calculator
         switch(tokens.length)
         {
         }
-        if (tokens.length == 0)
+        if (tokens.length == 1)
         {
         	if (tokens[0].equalsIgnoreCase("quit"))
         	{
@@ -148,22 +148,23 @@ public class Calculator
         	}
         	else
         	{
-        		throw new CalculatorException(" not a valid command: quit,negate,have,+,-, nor /");
+        		throw new CalculatorException("not a valid command: quit,negate,have,+,-, nor /");
         	}
         }
         else if (tokens.length == 2)
         {
-        	return calculateTwoTokens(tokens);
+        		return calculateTwoTokens(tokens);
         }
         else if (tokens.length == 3)
         {
-        	return calculateThreeTokens(tokens);
+        		return calculateThreeTokens(tokens);
         }
         else if (tokens.length == 4)
         {
-        	throw new NumberFormatException();
+        		throw new NumberFormatException();
         }
             // TODO: complete this...
+		return 0;
         }
 
     
@@ -196,11 +197,28 @@ public class Calculator
      * (4) "Input number cannot be parsed to an int. Please try again." - a NumberFormat has been caught.
      * (5) "Calculator Exception, message is: %s", where %s is the message of a
      * CalculatorException - a CalculatorException has been caught.
+     * @throws CalculatorException 
+     * @throws NumberFormatException 
      */
-    public static String parseAndExecute(String input)
+    public static String parseAndExecute(String input) throws NumberFormatException, CalculatorException 
     {
     	String [] tokens = input.split(" ");
-    	if ()
+   int k = execute(tokens);
+    	if (tokens.length == 1)
+    	{
+    		if (k ==Integer.MIN_VALUE)
+    		{
+    			String b = "quit";
+    			return b;
+    		}
+    	if (tokens.length == 2);
+    	{
+    		return String.format("The result is: %d", k);
+    	}
+    		
+    	}
+		return null;
+    	
         // TODO: complete this...
         // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
         // method will catch those exceptions and respond accordingly.
